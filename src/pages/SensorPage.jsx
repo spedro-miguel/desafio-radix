@@ -1,35 +1,39 @@
 import { motion } from "framer-motion";
 import Header from "../components/common/Header";
 import StatCard from "../components/common/StatCard";
-import { CreditCard, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
+import {
+  ChartColumnDecreasing,
+  ChartColumnIncreasing,
+  IdCard,
+  TrendingUp,
+} from "lucide-react";
 import SensorOverviewChart from "../components/sensor/SensorOverviewChart";
 import { useState, useEffect } from "react";
 
-// Dados de exemplo para KPIs de cada sensor
 const sensorKpiData = {
   sensor1: {
-    totalRevenue: "$1,234,567",
-    averageOrderValue: "$78.90",
-    conversionRate: "3.45%",
-    salesGrowth: "12.3%",
+    valorMaximo: "185.0",
+    valorMinimo: "65.0",
+    valorMedio: "121.32",
+    idSensor: "EQ-12051",
   },
   sensor2: {
-    totalRevenue: "$2,345,678",
-    averageOrderValue: "$88.50",
-    conversionRate: "4.10%",
-    salesGrowth: "15.6%",
+    valorMaximo: "189.0",
+    valorMinimo: "68.0",
+    valorMedio: "123.08",
+    idSensor: "EQ-12958",
   },
   sensor3: {
-    totalRevenue: "$3,456,789",
-    averageOrderValue: "$95.30",
-    conversionRate: "5.25%",
-    salesGrowth: "10.8%",
+    valorMaximo: "190.0",
+    valorMinimo: "60.0",
+    valorMedio: "121.84",
+    idSensor: "EQ-12448",
   },
   sensor4: {
-    totalRevenue: "$1,567,890",
-    averageOrderValue: "$72.40",
-    conversionRate: "2.95%",
-    salesGrowth: "8.9%",
+    valorMaximo: "190.0",
+    valorMinimo: "65.0",
+    valorMedio: "125.32",
+    idSensor: "EQ-12163",
   },
 };
 
@@ -55,27 +59,27 @@ const SensorPage = () => {
           transition={{ duration: 1 }}
         >
           <StatCard
-            name="Total Revenue"
-            icon={DollarSign}
-            value={kpis.totalRevenue}
+            name="Valor máximo"
+            icon={ChartColumnIncreasing}
+            value={kpis.valorMaximo}
             color="#6366F1"
           />
           <StatCard
-            name="Avg. Order Value"
-            icon={ShoppingCart}
-            value={kpis.averageOrderValue}
+            name="Valor mínimo"
+            icon={ChartColumnDecreasing}
+            value={kpis.valorMinimo}
             color="#10B981"
           />
           <StatCard
-            name="Conversion Rate"
+            name="Valor médio"
             icon={TrendingUp}
-            value={kpis.conversionRate}
+            value={kpis.valorMedio}
             color="#F59E0B"
           />
           <StatCard
-            name="Sales Growth"
-            icon={CreditCard}
-            value={kpis.salesGrowth}
+            name="Id sensor"
+            icon={IdCard}
+            value={kpis.idSensor}
             color="#EF4444"
           />
         </motion.div>

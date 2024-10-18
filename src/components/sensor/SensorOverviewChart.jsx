@@ -8,155 +8,32 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useState } from "react";
-
-const sensorData = {
-  sensor1: {
-    monthly: [
-      { week: "Sem 1", valor: 176 },
-      { week: "Sem 2", valor: 182 },
-      { week: "Sem 3", valor: 160 },
-      { week: "Sem 4", valor: 185 },
-    ],
-    weekly: [
-      { day: "Dom", valor: 120 },
-      { day: "Seg", valor: 135 },
-      { day: "Ter", valor: 145 },
-      { day: "Qua", valor: 112 },
-      { day: "Qui", valor: 130 },
-      { day: "Sex", valor: 155 },
-      { day: "Sab", valor: 148 },
-    ],
-    twoDays: [
-      { hours: "00:00h", valor: 95 },
-      { hours: "08:00h", valor: 125 },
-      { hours: "16:00h", valor: 110 },
-      { hours: "00:00h", valor: 105 },
-      { hours: "08:00h", valor: 130 },
-      { hours: "16:00h", valor: 120 },
-      { hours: "00:00h", valor: 115 },
-    ],
-    daily: [
-      { hours: "00:00h", valor: 65 },
-      { hours: "04:00h", valor: 80 },
-      { hours: "08:00h", valor: 90 },
-      { hours: "12:00h", valor: 100 },
-      { hours: "16:00h", valor: 85 },
-      { hours: "20:00h", valor: 95 },
-      { hours: "00:00h", valor: 70 },
-    ],
-  },
-  sensor2: {
-    monthly: [
-      { week: "Sem 1", valor: 178 },
-      { week: "Sem 2", valor: 189 },
-      { week: "Sem 3", valor: 150 },
-      { week: "Sem 4", valor: 170 },
-    ],
-    weekly: [
-      { day: "Dom", valor: 125 },
-      { day: "Seg", valor: 138 },
-      { day: "Ter", valor: 142 },
-      { day: "Qua", valor: 110 },
-      { day: "Qui", valor: 135 },
-      { day: "Sex", valor: 160 },
-      { day: "Sab", valor: 150 },
-    ],
-    twoDays: [
-      { hours: "00:00h", valor: 100 },
-      { hours: "08:00h", valor: 115 },
-      { hours: "16:00h", valor: 120 },
-      { hours: "00:00h", valor: 110 },
-      { hours: "08:00h", valor: 125 },
-      { hours: "16:00h", valor: 135 },
-      { hours: "00:00h", valor: 118 },
-    ],
-    daily: [
-      { hours: "00:00h", valor: 68 },
-      { hours: "04:00h", valor: 85 },
-      { hours: "08:00h", valor: 92 },
-      { hours: "12:00h", valor: 105 },
-      { hours: "16:00h", valor: 88 },
-      { hours: "20:00h", valor: 97 },
-      { hours: "00:00h", valor: 72 },
-    ],
-  },
-  sensor3: {
-    monthly: [
-      { week: "Sem 1", valor: 170 },
-      { week: "Sem 2", valor: 190 },
-      { week: "Sem 3", valor: 155 },
-      { week: "Sem 4", valor: 180 },
-    ],
-    weekly: [
-      { day: "Dom", valor: 128 },
-      { day: "Seg", valor: 137 },
-      { day: "Ter", valor: 146 },
-      { day: "Qua", valor: 120 },
-      { day: "Qui", valor: 140 },
-      { day: "Sex", valor: 150 },
-      { day: "Sab", valor: 160 },
-    ],
-    twoDays: [
-      { hours: "00:00h", valor: 97 },
-      { hours: "08:00h", valor: 120 },
-      { hours: "16:00h", valor: 110 },
-      { hours: "00:00h", valor: 105 },
-      { hours: "08:00h", valor: 130 },
-      { hours: "16:00h", valor: 125 },
-      { hours: "00:00h", valor: 115 },
-    ],
-    daily: [
-      { hours: "00:00h", valor: 60 },
-      { hours: "04:00h", valor: 78 },
-      { hours: "08:00h", valor: 85 },
-      { hours: "12:00h", valor: 98 },
-      { hours: "16:00h", valor: 82 },
-      { hours: "20:00h", valor: 90 },
-      { hours: "00:00h", valor: 75 },
-    ],
-  },
-  sensor4: {
-    monthly: [
-      { week: "Sem 1", valor: 180 },
-      { week: "Sem 2", valor: 190 },
-      { week: "Sem 3", valor: 165 },
-      { week: "Sem 4", valor: 185 },
-    ],
-    weekly: [
-      { day: "Dom", valor: 130 },
-      { day: "Seg", valor: 140 },
-      { day: "Ter", valor: 155 },
-      { day: "Qua", valor: 115 },
-      { day: "Qui", valor: 138 },
-      { day: "Sex", valor: 165 },
-      { day: "Sab", valor: 145 },
-    ],
-    twoDays: [
-      { hours: "00:00h", valor: 110 },
-      { hours: "08:00h", valor: 125 },
-      { hours: "16:00h", valor: 115 },
-      { hours: "00:00h", valor: 105 },
-      { hours: "08:00h", valor: 135 },
-      { hours: "16:00h", valor: 120 },
-      { hours: "00:00h", valor: 115 },
-    ],
-    daily: [
-      { hours: "00:00h", valor: 65 },
-      { hours: "04:00h", valor: 82 },
-      { hours: "08:00h", valor: 88 },
-      { hours: "12:00h", valor: 100 },
-      { hours: "16:00h", valor: 90 },
-      { hours: "20:00h", valor: 95 },
-      { hours: "00:00h", valor: 80 },
-    ],
-  },
-};
+import { useState, useEffect } from "react";
 
 const SensorOverviewChart = ({ selectedSensor, setSelectedSensor }) => {
   const [selectedTimeRange, setSelectedTimeRange] = useState("30 dias");
+  const [sensorData, setSensorData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSensorData = async () => {
+      try {
+        const response = await fetch("/sensores.json");
+        const data = await response.json();
+        setSensorData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro ao buscar os dados dos sensores:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchSensorData();
+  }, []);
 
   const getChartData = () => {
+    if (!sensorData) return [];
+
     const sensor = sensorData[selectedSensor];
     switch (selectedTimeRange) {
       case "1 dia":

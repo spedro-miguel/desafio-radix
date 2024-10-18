@@ -14,10 +14,10 @@ import {
 const COLORS = ["#6366F1", "#8B5CF6", "#EC4899", "#10B981"];
 
 const VALUE_PER_SENSOR_DATA = [
-  { name: "EQ-12958", valor: 133 },
-  { name: "EQ-12163", valor: 110 },
-  { name: "EQ-12082", valor: 90 },
-  { name: "EQ-12648", valor: 79 },
+  { name: "EQ-12958", valor: 65.0 },
+  { name: "EQ-12163", valor: 68.0 },
+  { name: "EQ-12082", valor: 60.0 },
+  { name: "EQ-12648", valor: 65.0 },
 ];
 
 const ValuePerSensorChart = () => {
@@ -29,7 +29,7 @@ const ValuePerSensorChart = () => {
       transition={{ delay: 0.4 }}
     >
       <h2 className="text-lg font-medium mb-4 text-gray-100">
-        Valor médio de cada sensor
+        Valor mínimo de cada sensor
       </h2>
 
       <div className="h-80">

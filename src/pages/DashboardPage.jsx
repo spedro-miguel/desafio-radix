@@ -28,13 +28,13 @@ const DashboardPage = () => {
           <StatCard
             name="Valor máximo do sensor"
             icon={ChartColumnIncreasing}
-            value="197.98"
+            value="190.0"
             color="#6366F1"
           />
           <StatCard
             name="Valor mínimo do sensor"
             icon={ChartColumnDecreasing}
-            value="8.67"
+            value="60.0"
             color="#8B5CF6"
           />
           <StatCard

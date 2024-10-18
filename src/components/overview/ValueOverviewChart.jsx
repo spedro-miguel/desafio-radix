@@ -10,12 +10,10 @@ import {
 import { motion } from "framer-motion";
 
 const valueData = [
-  { name: "Seg", valor: 120 },
-  { name: "Ter", valor: 157 },
-  { name: "Qua", valor: 105 },
-  { name: "Qui", valor: 139 },
-  { name: "Sex", valor: 177 },
-  { name: "Sab", valor: 114 },
+  { name: "EQ-12051", valor: 185.0 },
+  { name: "EQ-12958", valor: 189.0 },
+  { name: "EQ-12448", valor: 190.0 },
+  { name: "EQ-12163", valor: 190.0 },
 ];
 
 const ValueOverviewChart = () => {
@@ -27,7 +25,7 @@ const ValueOverviewChart = () => {
       transition={{ delay: 0.2 }}
     >
       <h2 className="text-lg font-medium mb-4 text-gray-100">
-        Valor médio dos sensores
+        Valor máximo dos sensores
       </h2>
 
       <div className="h-80">

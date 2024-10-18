@@ -11,12 +11,6 @@ const SIDEBAR_ITEMS = [
     href: "/",
   },
   { name: "Sensor", icon: BarChart2, color: "#3B82F6", href: "/sensor" },
-  {
-    name: "Configurações",
-    icon: Settings,
-    color: "#6EE7B7",
-    href: "/settings",
-  },
 ];
 
 const Sidebar = () => {
